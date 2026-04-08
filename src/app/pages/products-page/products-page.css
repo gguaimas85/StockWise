@@ -1,0 +1,4 @@
+.input-mayusculas {
+  /* Convierte visualmente el texto del input a mayúsculas */
+  text-transform: uppercase;
+}

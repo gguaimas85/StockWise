@@ -1,0 +1,27 @@
+<nav
+  class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1"
+>
+  <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+    <div class="capitalize"></div>
+    <div class="flex items-center">
+      <a [routerLink]="role === 'ADMIN' ? '/admin/home' : '/employee/home'">
+        <div
+          class="middle none font-sans font-bold center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 hidden items-center gap-1 px-4 xl:flex"
+        >
+          <app-profile-icon /> {{ fullName }}
+        </div>
+      </a>
+      <button
+        type="button"
+        routerLink="login"
+      >
+        <div
+          class="middle none font-sans font-bold center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 hidden items-center gap-1 px-4 xl:flex"
+        >
+          <app-get-in-icon />
+          Logout
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>

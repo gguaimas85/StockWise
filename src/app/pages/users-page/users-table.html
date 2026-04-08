@@ -1,0 +1,40 @@
+<div class="container">
+  
+  <div class="header">
+    <h2>Usuarios</h2>
+    <button (click)="crearUsuario()" class="btn btn-create">
+      + Nuevo Usuario
+    </button>
+  </div>
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.ID }}</td>
+        <td>{{ user.NOMBRE_COMPLETO }}</td>
+        <td>{{ user.MAIL }}</td>
+        <td>{{ user.ROL }}</td>
+        <td class="actions-cell">
+          
+          <button (click)="cambiarPass(user.ID)" class="btn-action btn-pass">
+            Cambiar clave
+          </button>
+
+          <button (click)="eliminarUsuario(user.ID)" class="btn-action btn-delete">
+            Eliminar usuario
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

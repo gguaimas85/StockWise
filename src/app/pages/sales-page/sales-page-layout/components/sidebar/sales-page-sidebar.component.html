@@ -1,0 +1,79 @@
+<aside class="bg-primary-800 -translate-x-80 inset-0 h-full w-72 text-white flex flex-col xl:translate-x-0">
+  <!-- Brand -->
+  <div class="relative border-b border-white/20">
+    <div class="flex items-center gap-4 py-6 px-6">
+      <h6 class="text-base font-semibold leading-relaxed">StockWise Manager</h6>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 overflow-y-auto px-4 pb-6">
+    <ul class="flex flex-col gap-1">
+      <li>
+        <a routerLink="/sales-page/sales" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+          <button type="button" class="w-full flex items-center gap-4 px-4 py-3 rounded-lg text-white transition-all text-xs font-bold hover:bg-white/10 active:bg-primary-600">
+            <!-- Cart / Ventas Icon (from original sidemenu style) -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04047 2.29242C2.6497 2.15503 2.22155 2.36044 2.08416 2.7512C1.94678 3.14197 2.15218 3.57012 2.54295 3.7075L2.80416 3.79934C3.47177 4.03406 3.91052 4.18961 4.23336 4.34802C4.53659 4.4968 4.67026 4.61723 4.75832 4.74609C4.84858 4.87818 4.91828 5.0596 4.95761 5.42295C4.99877 5.80316 4.99979 6.29837 4.99979 7.03832L4.99979 9.64C4.99979 12.5816 5.06302 13.5523 5.92943 14.4662C6.79583 15.38 8.19028 15.38 10.9792 15.38H16.2821C17.8431 15.38 18.6236 15.38 19.1753 14.9304C19.727 14.4808 19.8846 13.7164 20.1997 12.1875L20.6995 9.76275C21.0466 8.02369 21.2202 7.15417 20.7762 6.57708C20.3323 6 18.8155 6 17.1305 6H6.49233C6.48564 5.72967 6.47295 5.48373 6.4489 5.26153C6.39517 4.76515 6.27875 4.31243 5.99677 3.89979C5.71259 3.48393 5.33474 3.21759 4.89411 3.00139C4.48203 2.79919 3.95839 2.61511 3.34187 2.39838L3.04047 2.29242ZM15.5172 8.4569C15.8172 8.74256 15.8288 9.21729 15.5431 9.51724L12.686 12.5172C12.5444 12.6659 12.3481 12.75 12.1429 12.75C11.9376 12.75 11.7413 12.6659 11.5998 12.5172L10.4569 11.3172C10.1712 11.0173 10.1828 10.5426 10.4828 10.2569C10.7827 9.97123 11.2574 9.98281 11.5431 10.2828L12.1429 10.9125L14.4569 8.48276C14.7426 8.18281 15.2173 8.17123 15.5172 8.4569Z" fill="#ffffff" />
+              <path d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z" fill="#ffffff" />
+              <path d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z" fill="#ffffff" />
+            </svg>
+            <p class="text-base font-medium">Ventas</p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/sales-page/products" routerLinkActive="active">
+          <button type="button" class="w-full flex items-center gap-4 px-4 py-3 rounded-lg text-white transition-all text-xs font-bold hover:bg-white/10 active:bg-primary-600">
+            <!-- Productos / Warehouse Icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+              <path d="M17.5777 4.43152L15.5777 3.38197C13.8221 2.46066 12.9443 2 12 2C11.0557 2 10.1779 2.46066 8.42229 3.38197L8.10057 3.5508L17.0236 8.64967L21.0403 6.64132C20.3941 5.90949 19.3515 5.36234 17.5777 4.43152Z" fill="#ffffff" />
+              <path d="M21.7484 7.96434L17.75 9.96353V13C17.75 13.4142 17.4142 13.75 17 13.75C16.5858 13.75 16.25 13.4142 16.25 13V10.7135L12.75 12.4635V21.904C13.4679 21.7252 14.2848 21.2965 15.5777 20.618L17.5777 19.5685C19.7294 18.4393 20.8052 17.8748 21.4026 16.8603C22 15.8458 22 14.5833 22 12.0585V11.9415C22 10.0489 22 8.86557 21.7484 7.96434Z" fill="#ffffff" />
+              <path d="M11.25 21.904V12.4635L2.25164 7.96434C2 8.86557 2 10.0489 2 11.9415V12.0585C2 14.5833 2 15.8458 2.5974 16.8603C3.19479 17.8748 4.27062 18.4393 6.42228 19.5685L8.42229 20.618C9.71524 21.2965 10.5321 21.7252 11.25 21.904Z" fill="#ffffff" />
+              <path d="M2.95969 6.64132L12 11.1615L15.4112 9.4559L6.52456 4.37785L6.42229 4.43152C4.64855 5.36234 3.6059 5.90949 2.95969 6.64132Z" fill="#ffffff" />
+            </svg>
+            <p class="text-base font-medium">Productos</p>
+          </button>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Cash actions -->
+  <div class="p-4 border-t border-white/20 space-y-3">
+    <div class="flex items-center gap-2">
+      <button *ngIf="!loading()" (click)="onCashAction()" [class]="cashStatus()?.cashOpen ? 'flex-1 px-3 py-2 text-sm rounded bg-red-600 hover:bg-red-700 transition' : 'flex-1 px-3 py-2 text-sm rounded bg-primary-500 hover:bg-primary-600 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 transition'">
+        {{ cashStatus()?.cashOpen ? 'Cerrar Caja' : 'Abrir Caja' }}
+      </button>
+      <button *ngIf="loading()" disabled class="flex-1 px-3 py-2 text-sm rounded bg-gray-500/40 cursor-not-allowed">
+        Cargando...
+      </button>
+    </div>
+    <div class="text-[11px] text-center text-white/60">© 2025, StockWise Team.</div>
+  </div>
+</aside>
+
+<!-- Modal de confirmación para cerrar caja -->
+<div *ngIf="showConfirmModal()" class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+    <div class="p-6">
+      <h3 class="text-xl font-semibold text-gray-900 mb-4">¿Cerrar caja?</h3>
+      <p class="text-gray-600 mb-2">¿Está seguro que desea cerrar la caja?</p>
+      <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-4">
+        <p class="text-sm text-blue-800">
+          <span class="font-medium">Total de ventas:</span>
+          {{ (cashStatus()?.data?.totalVentas || 0) | currency:'ARS':'symbol':'1.0-0' }}
+        </p>
+        <p class="text-sm text-blue-800">
+          <span class="font-medium">Cantidad de ventas:</span>
+          {{ cashStatus()?.data?.cantidadVentas || 0 }}
+        </p>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">Esta acción no se puede deshacer.</p>
+      <div class="flex gap-3 justify-end">
+        <button (click)="cancelCloseCash()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">Cancelar</button>
+        <button (click)="confirmCloseCash()" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Confirmar Cierre</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<table class="border-collapse w-full rounded-2xl overflow-hidden">
+  <thead>
+    <tr>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        ID
+      </th>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        ID_PRODUCTO
+      </th>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        CANTIDAD_DEPOSITO
+      </th>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        CANTIDAD_SUCURSAL
+      </th>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        Estado
+      </th>
+      <th
+        class="p-3 font-bold uppercase bg-primary-800 text-white border border-gray-300 hidden lg:table-cell"
+      >
+        Acciones
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(item of StockList ; track $index) {
+    <tr
+      class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+    >
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        {{ item.ID }}
+      </td>
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        {{ item.ID_PRODUCTO }}
+      </td>
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        {{ item.CANTIDAD_DEPOSITO }}
+      </td>
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        {{ item.CANTIDAD_SUCURSAL }}
+      </td>
+
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        <span
+          class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+          >Status</span
+        >
+        @if(item.CANTIDAD_SUCURSAL === 0 ){
+          <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">sin stock</span>
+        }
+        @else if(item.CANTIDAD_SUCURSAL > 20 ){
+          <span class="rounded bg-green-400 py-1 px-3 text-xs font-bold">stock optimo</span>
+        }
+        @else {
+          <span class="rounded bg-amber-400 py-1 px-3 text-xs font-bold">stock minimo</span>
+
+        }
+      </td>
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+      >
+        <button (click)="actualizarStock(item)" class="border-0 py-1 px-3 mr-4 rounded-md text-white bg-orange-400 hover:bg-orange-300">
+            Actualizar stock
+          </button>
+
+          <button (click)="eliminarStock(item.ID)" class="border-0 py-1 px-3 rounded-md text-white bg-error-500 hover:bg-red-300">
+            EliminarStock
+          </button>
+        
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

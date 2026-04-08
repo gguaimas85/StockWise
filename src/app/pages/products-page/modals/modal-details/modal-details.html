@@ -1,0 +1,41 @@
+<div *ngIf="isVisible" class="fixed inset-0 z-50 flex items-center justify-center bg-zinc-500/80"
+  (click)="closeModal()">
+
+  <div class="relative p-6 w-full max-w-lg mx-auto bg-white rounded-lg shadow-xl" (click)="$event.stopPropagation()">
+
+    <div class="flex justify-between items-center border-b pb-3 mb-3">
+      <h3 class="text-xl font-bold text-gray-900">
+        Detalles del Producto
+      </h3>
+    </div>
+
+    <div class="mb-4">
+      <p class="text-lg font-medium text-gray-700">
+        Nombre: <span class="font-bold text-blue-600">{{detailProduct?.NOMBRE}}</span>
+      </p>
+      <p class="text-lg font-medium text-gray-700">
+        Descripcion: <span class="font-bold text-blue-600">{{detailProduct?.DESCRIPCION}}</span>
+      </p>
+      <p class="text-lg font-medium text-gray-700">
+        Categoria: <span class="font-bold text-blue-600">{{detailProduct?.CATEGORIA}}</span>
+      </p>
+      <p class="text-lg font-medium text-gray-700">
+        Precio: $<span class="font-bold text-blue-600">{{detailProduct?.PRECIO}}</span>
+      </p>
+      <p class="text-lg font-medium text-gray-700">
+        Situacion: <span class="font-bold text-blue-600"
+          [ngClass]="{ 'text-red-600': !detailProduct?.ACTIVE }">{{detailProduct?.ACTIVE
+          ? "Activo": "Inactivo"}}</span>
+      </p>
+      <ng-content></ng-content>
+    </div>
+
+    <div class="flex justify-end space-x-3 border-t pt-3 mt-3">
+      <button (click)="closeModal()"
+        class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+        Cerrar
+      </button>
+    </div>
+
+  </div>
+</div>

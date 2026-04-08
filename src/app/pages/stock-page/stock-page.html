@@ -1,0 +1,102 @@
+<div class="flex justify-between mb-3">
+  <h1 class="text-2xl font-medium text-primary-800">Tabla de Stock de productos</h1>
+  <button (click)="openModalNewStock()" class="border-0 py-1 px-3 rounded-md text-white bg-success-500 hover:bg-green-400">
+    + Agregar Stock de Producto
+  </button>
+</div>
+
+@if(stockList$ | async; as stockList) {
+<app-stock-table
+  [StockList]="stockList"
+  (productStockDeleted)="reloadStockList()"
+  (updateProductStock)="openEditStockModal($event)"
+/>
+} @else{
+<p>No hay lista de stock</p>
+} 
+
+@if(showEditStockModal()){
+
+<div class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-xl max-w-lg w-full mx-4">
+    <div class="p-6">
+      <h3 class="text-xl font-semibold text-gray-900 mb-4">
+        Editando stock de producto Id {{ selectedStock().ID_PRODUCTO }}
+      </h3>
+      <div class="bg-blue-50 border-2 border-primary-600 rounded p-3 mb-4">
+        <div class="flex items-center justify-around gap-2">
+          <p class="text-sm text-blue-800">
+            <span class="font-medium">Cantidad en depósito</span>
+          </p>
+          <div class="flex">
+            <button
+              (click)="decreaseStorageStock()"
+              class="w-7 h-7 rounded-md border hover:bg-primary-500 hover:text-white mx-1 flex items-center justify-center text-sm"
+            >
+              -
+            </button>
+            <span class="w-8 text-center">{{ selectedStock().CANTIDAD_DEPOSITO }}</span>
+            <button
+              (click)="increaseStorageStock()"
+              class="w-7 h-7 rounded-md border hover:bg-primary-500 hover:text-white mx-1 flex items-center justify-center text-sm"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center justify-around gap-2 mt-2">
+          <p class="text-sm text-blue-800">
+            <span class="font-medium">Cantidad en sucursal</span>
+          </p>
+          <div class="flex">
+            <button
+              (click)="decreaseBranchStock()"
+              class="w-7 h-7 rounded-md border hover:bg-primary-500 hover:text-white mx-1 flex items-center justify-center text-sm"
+            >
+              -
+            </button>
+            <span class="w-8 text-center">{{ selectedStock().CANTIDAD_SUCURSAL }}</span>
+            <button
+              (click)="increaseBranchStock()"
+              class="w-7 h-7 rounded-md border hover:bg-primary-500 hover:text-white mx-1 flex items-center justify-center text-sm"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      @if(loading()){
+      <div class="bg-gray-50 border-2 text-center border-gray-600 rounded p-3 mb-4">
+        Actualizando...
+      </div>
+      } @if(resultMessage() == 'EXITO'){
+      <div class="bg-green-50 border-2 text-center border-green-600 rounded p-3 mb-4">
+        Actualizado exitosamente!
+      </div>
+      } @if(resultMessage() == 'ERROR'){
+      <div class="bg-red-50 border-2 text-center border-red-600 rounded p-3 mb-4">
+        Ocurrio un error!
+      </div>
+      }
+
+      <div class="flex gap-3 justify-end">
+        <button
+          (click)="closeEditStockModal()"
+          class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-200"
+        >
+          Cancelar
+        </button>
+        <button
+          (click)="completeStockUpdate()"
+          class="px-4 py-2 bg-success-500 text-white rounded hover:bg-green-700"
+        >
+          Confirmar Actualizacion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+  <app-stock-modal [isVisible]="showModalNewStock()" (close)="recargarDatosPadreNewStock($event)" />
+

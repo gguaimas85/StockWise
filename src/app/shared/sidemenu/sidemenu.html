@@ -1,0 +1,167 @@
+<aside
+  class="bg-primary-800 -translate-x-80 inset-0 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
+  <div class="relative border-b border-white/20">
+    <a class="flex items-center gap-4 py-6 px-8" href="#/">
+      <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">
+        StockWise Manager
+      </h6>
+      <br />
+      <h3 class="font-extrabold uppercase text-white">
+        @if (role === Role.ADMIN) { Admin } @else { Employee }
+      </h3>
+    </a>
+  </div>
+  <div class="m-4 flex flex-col justify-between">
+    <ul class="mb-4 flex flex-col gap-1">
+      @if (role === Role.EMPLOYEE) {
+      <li>
+        <a routerLink="/employee/home" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg active:bg-primary-500 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 w-full flex items-center gap-4 px-4">
+          <app-house-icon />
+          <p class="block font-sans text-base font-medium">General</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/employee/sales" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-cart-icon />
+          <p class="block font-sans text-base font-medium">Ventas</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/employee/products" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-500 w-full flex items-center gap-4 px-4">
+          <app-box-icon />
+          <p class="block font-sans text-base font-medium">Productos</p>
+        </a>
+      </li>
+      } @else {
+      <li>
+        <a routerLink="/admin/home" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:shadow-lg hover:shadow-blue-500/40 w-full flex items-center gap-4 px-4">
+          <app-house-icon />
+          <p class="block font-sans text-base font-medium">General</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/sales" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-cart-icon />
+          <p class="block font-sans text-base font-medium">Ventas</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/products" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-box-icon />
+          <p class="block font-sans text-base font-medium">Productos</p>
+        </a>
+      </li>
+      } @if (role === Role.ADMIN) {
+      <li>
+        <a routerLink="/admin/stock" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-table-icon />
+          <p class="text-base font-medium">Stock</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/cash-register" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-moneybag-icon/>
+          <p class="text-base font-medium">Cierres de Caja</p>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/users" routerLinkActive="border-b-4 border-primary-700 bg-primary-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4">
+          <app-add-user-icon />
+          <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium">
+            Usuarios
+          </p>
+        </a>
+      </li>
+      <!-- <li>
+        <a class="" href="#">
+          <button
+            class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4 capitalize"
+            type="button"
+          >
+            <app-bell-icon />
+            <p class="block font-sans text-base font-medium">Notifications</p>
+          </button>
+        </a>
+      </li> -->
+      }
+    </ul>
+    <ul class="">
+      @if (role === Role.EMPLOYEE) {
+      <div class="border-t border-white/20">
+        <div class="flex items-center gap-2">
+          <button *ngIf="!loading()" (click)="onCashAction()" [class]="
+              cashStatus()?.cashOpen
+                ? 'flex-1 px-3 py-2 text-sm rounded bg-red-600 hover:bg-red-700 transition'
+                : 'flex-1 px-3 py-2 text-sm rounded bg-primary-500 hover:bg-primary-600 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 transition'
+            ">
+            {{ cashStatus()?.cashOpen ? 'Cerrar Caja' : 'Abrir Caja' }}
+          </button>
+          <button *ngIf="loading()" disabled class="flex-1 px-3 py-2 text-sm rounded bg-gray-500/40 cursor-not-allowed">
+            Cargando...
+          </button>
+        </div>
+      </div>
+      }
+      <!-- <li>
+        <a class="" href="#">
+          <button
+            class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-primary-600 w-full flex items-center gap-4 px-4"
+            type="button"
+          >
+            <app-profile-icon />
+            <p class="block font-sans text-base font-medium">Profile</p>
+          </button>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</aside>
+
+<!-- Modal de confirmación para cerrar caja -->
+<div *ngIf="showConfirmModal()"
+  class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4">
+    <div class="p-6">
+      <h3 class="text-xl font-semibold text-gray-900 mb-4">¿Cerrar caja?</h3>
+      <p class="text-gray-600 mb-2">¿Está seguro que desea cerrar la caja?</p>
+      <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-4">
+        <p class="text-sm text-blue-800">
+          <span class="font-medium">Total de ventas:</span>
+          {{ cashStatus()?.data?.totalVentas || 0 | currency : 'ARS' : 'symbol' : '1.0-0' }}
+        </p>
+        <p class="text-sm text-blue-800">
+          <span class="font-medium">Cantidad de ventas:</span>
+          {{ cashStatus()?.data?.cantidadVentas || 0 }}
+        </p>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">Esta acción no se puede deshacer.</p>
+      <div class="flex gap-3 justify-end">
+        <button (click)="cancelCloseCash()"
+          class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">
+          Cancelar
+        </button>
+        <button (click)="confirmCloseCash()" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+          Confirmar Cierre
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

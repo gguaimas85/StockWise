@@ -1,0 +1,80 @@
+.container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn-create {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-create:hover {
+  background-color: #45a049;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.users-table th, 
+.users-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table thead tr {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.users-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.btn-action:hover {
+  opacity: 0.8;
+}
+
+.btn-pass {
+  background-color: #FF9800;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}

@@ -1,0 +1,61 @@
+<div *ngIf="isVisible" class="fixed inset-0 z-50 flex items-center justify-center bg-zinc-500/80">
+  <div class="relative p-6 w-full max-w-lg mx-auto bg-white rounded-lg shadow-xl" (click)="$event.stopPropagation()">
+
+    <div class="flex justify-between items-center border-b pb-3 mb-3">
+      <h3 class="text-xl font-bold text-gray-900">
+        Crear Producto
+      </h3>
+
+      <button (click)="closeModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mb-4">
+      <form>
+
+        <label for="ID_PRODUCTO" class="font-semibold text-sm text-gray-600 pb-1 block">ID_PRODUCTO
+          <input type="number" name="ID_PRODUCTO" id="ID_PRODUCTO" [(ngModel)]="ID_PRODUCTO"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
+        </label>
+        <label for="CANTIDAD_DEPOSITO" class="font-semibold text-sm text-gray-600 pb-1 block">CANTIDAD_DEPOSITO
+          <input type="number" name="CANTIDAD_DEPOSITO" id="CANTIDAD_DEPOSITO" [(ngModel)]="CANTIDAD_DEPOSITO"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
+        </label>
+        <label for="CANTIDAD_SUCURSAL" class="font-semibold text-sm text-gray-600 pb-1 block">CANTIDAD_SUCURSAL
+          <input type="number" name="CANTIDAD_SUCURSAL" id="CANTIDAD_SUCURSAL" [(ngModel)]="CANTIDAD_SUCURSAL"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
+        </label>
+      </form>
+      <ng-content></ng-content>
+    </div>
+
+     @if(loading()){
+      <div class="bg-gray-50 border-2 text-center border-gray-600 rounded p-3 mb-4">
+        Creando stock...
+      </div>
+      } @if(resultMessage() == 'EXITO'){
+      <div class="bg-green-50 border-2 text-center border-green-600 rounded p-3 mb-4">
+        Stock para el producto {{ID_PRODUCTO}} creado exitosamente!
+      </div>
+      } @if(resultMessage() == 'ERROR'){
+      <div class="bg-red-50 border-2 text-center border-red-600 rounded p-3 mb-4">
+        Ocurrio un error!
+      </div>
+      }
+
+    <div class="flex justify-end space-x-3 border-t pt-3 mt-3">
+      <button (click)="closeModal()"
+        class="px-4 py-2 text-sm font-medium bg-gray-100 rounded-md hover:bg-gray-700 hover:text-white transition-colors">
+        Cancelar
+      </button>
+      <button (click)="createProductStock()"
+        class="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-md hover:bg-primary-700 transition-colors">
+        Grabar Stock Producto
+      </button>
+    </div>
+
+  </div>
+</div>

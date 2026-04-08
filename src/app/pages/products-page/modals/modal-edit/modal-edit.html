@@ -1,0 +1,54 @@
+<div *ngIf="isVisible" class="fixed inset-0 z-50 flex items-center justify-center bg-zinc-500/80">
+  <div class="relative p-6 w-full max-w-lg mx-auto bg-white rounded-lg shadow-xl" (click)="$event.stopPropagation()">
+
+    <div class="flex justify-between items-center border-b pb-3 mb-3">
+      <h3 class="text-xl font-bold text-gray-900">
+        Modificar Producto
+      </h3>
+
+      <button (click)="closeModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mb-4">
+      <form>
+        <label class="font-semibold text-sm text-gray-600 pb-1 block ">ID: {{detailProduct?.ID}}
+        </label>
+        <label for="nombre" class="font-semibold text-sm text-gray-600 pb-1 block">Nombre del producto
+          <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre" placeholder={{detailProduct?.NOMBRE}}
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full input-mayusculas" />
+        </label>
+        <label for="categoria" class="font-semibold text-sm text-gray-600 pb-1 block">Categoria
+          <input type="text" name="categoria" id="categoria" [(ngModel)]="categoria"
+            placeholder={{detailProduct?.CATEGORIA}}
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full input-mayusculas" />
+        </label>
+        <label for="descripcion" class="font-semibold text-sm text-gray-600 pb-1 block">Descripcion
+          <input type="text" name="descripcion" id="descripcion" [(ngModel)]="descripcion"
+            placeholder={{detailProduct?.DESCRIPCION}}
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full input-mayusculas" />
+        </label>
+        <label for="precio" class="font-semibold text-sm text-gray-600 pb-1 block">Precio
+          <input type="number" name="precio" id="precio" [(ngModel)]="precio" placeholder={{detailProduct?.PRECIO}}
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
+        </label>
+      </form>
+      <ng-content></ng-content>
+    </div>
+
+    <div class="flex justify-end space-x-3 border-t pt-3 mt-3">
+      <button (click)="closeModal()"
+        class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+        Cancelar
+      </button>
+      <button (click)="updateProduct()"
+        class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors">
+        Modificar
+      </button>
+    </div>
+
+  </div>
+</div>

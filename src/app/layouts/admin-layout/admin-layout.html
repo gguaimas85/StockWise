@@ -1,0 +1,14 @@
+    <main class="h-full w-full bg-gray-50/50 flex flex-row">
+      <app-sidemenu [role]="adminRole" />
+      <div class="p-4 flex flex-col w-full">
+        <app-header [fullName]="fullName" [role]="adminRole"/>
+        <div class="pt-4">
+          <div class="p-1">
+            <router-outlet/>
+          </div>
+        </div>
+        <div class="fixed bottom-1 left-80 right-0">
+          <app-footer />
+        </div>
+      </div>
+    </main>

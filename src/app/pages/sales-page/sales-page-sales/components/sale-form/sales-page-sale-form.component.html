@@ -1,0 +1,89 @@
+<div class="h-full flex flex-col">
+  <div *ngIf="!cashIsOpen" class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+    <div class="flex items-center gap-2">
+      <div>
+        <h3 class="font-medium text-red-800">Caja Cerrada</h3>
+        <p class="text-sm text-red-600">No se pueden realizar ventas. Debe abrir la caja desde el menú lateral.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4 mb-4">
+    <h2 class="text-xl font-semibold text-gray-900">Venta en Proceso</h2>
+    <div class="flex-1 relative">
+      <input
+        type="text"
+        placeholder="Buscar producto..."
+  class="w-full max-w-md h-10 border border-gray-300 rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()" />
+
+  <div *ngIf="suggestions.length" class="absolute z-10 mt-1 border rounded-md bg-white shadow-lg max-w-md max-h-56 overflow-auto divide-y">
+        <button
+          *ngFor="let prod of suggestions"
+          type="button"
+          class="w-full text-left px-3 py-2 hover:bg-gray-50 text-sm flex items-center justify-between"
+          (click)="onSelectProduct(prod)">
+          <span>{{ prod.name }} - {{ prod.unitPrice | currency:'ARS' }}</span>
+          <span class="text-xs text-gray-600 ml-2">Stock: {{ prod.stockSucursal || 0 }}</span>
+        </button>
+      </div>
+    </div>
+
+    <button class="px-4 h-10 rounded-md border border-gray-300 text-sm hover:bg-gray-50" (click)="onCancelSale()">Cancelar Venta</button>
+  </div>
+
+  <div class="flex-1 flex flex-col border rounded-lg p-4 bg-white overflow-hidden shadow-sm">
+
+    <div class="flex-1 overflow-auto">
+      <div *ngIf="!items.length" class="text-center text-gray-500 py-8">
+        Aún no se han agregado productos
+      </div>
+
+  <div *ngFor="let item of items; let i = index" class="flex items-center gap-3 border-b py-3">
+        <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs flex-shrink-0">
+          IMG
+        </div>
+
+        <div class="flex-1 min-w-0">
+          <div class="font-medium truncate">{{ item.product.name }}</div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button class="w-7 h-7 rounded-md border hover:bg-gray-100 flex items-center justify-center text-sm" (click)="decreaseQty(i)">-</button>
+          <span class="w-8 text-center">{{ item.quantity }}</span>
+          <button class="w-7 h-7 rounded-md border hover:bg-gray-100 flex items-center justify-center text-sm" (click)="increaseQty(i)">+</button>
+        </div>
+
+        <div class="text-sm text-gray-600 w-24 text-right">
+          <div class="text-xs text-gray-500">precio unitario</div>
+          <div>{{ item.product.unitPrice | currency:'ARS':'symbol':'1.0-0' }}</div>
+        </div>
+
+        <div class="text-sm font-medium w-24 text-right">
+          <div class="text-xs text-gray-500">precio</div>
+          <div>{{ item.subtotal | currency:'ARS':'symbol':'1.0-0' }}</div>
+        </div>
+
+        <button class="text-red-600 hover:text-red-700 ml-2 text-sm" (click)="removeItem(i)">✕</button>
+      </div>
+    </div>
+
+    <div class="border-t pt-3 mt-3 flex justify-between items-center">
+      <span class="text-lg font-semibold">TOTAL</span>
+      <span class="text-xl font-bold">{{ totalAmount | currency:'ARS':'symbol':'1.0-0' }}</span>
+    </div>
+  </div>
+
+  <div class="mt-4 flex justify-end">
+    <button
+      [class]="(!items.length || !cashIsOpen)
+        ? 'px-6 h-10 rounded-md bg-gray-300 text-gray-500 text-sm cursor-not-allowed'
+        : 'px-6 h-10 rounded-md bg-primary-600 text-white text-sm hover:bg-primary-700'"
+      [disabled]="!items.length || !cashIsOpen"
+      [title]="!cashIsOpen ? 'La caja debe estar abierta para finalizar ventas' : ''"
+      (click)="onFinishSale()">
+      Finalizar Venta
+    </button>
+  </div>
+</div>
