@@ -1,2 +1,1 @@
 # StockWise
-Hola
